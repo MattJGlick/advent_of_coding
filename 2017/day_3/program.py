@@ -1,3 +1,15 @@
+"""
+ this is slightly misleading. for part 1 i actually didn't do the code to solve it. every bottom
+ right corner is a odd square (1, 9 25, etc). So I found the nearest odd square (bottom right
+ corner) was 312481 (559**2), which made the center of that line 312202 (312481 - 279 ((559-1)/2). then did
+ 312202 (center) - 312051 (my num) = 151 to the left. and i was on the 279th ((559-1)/2) row.
+ so 151 + 279 = 430
+
+ might have been a mathy way to do part 2, but couldnt see it... so brute forced. then went back
+ and brute forced part 1.
+"""
+
+
 def find_coords(input_num):
     direction = 1
     x = 0
