@@ -23,4 +23,4 @@ assert get_bank_loop([0, 2, 7, 0]) == (5, 4)
 assert get_bank_loop([10, 3, 15, 10, 5, 15, 5, 15, 9, 2, 5, 8, 5, 2, 3, 6]) == (14029, 2765)
 
 with open('input_file.txt') as inputfile:
-    get_bank_loop(map(int, [line.split() for line in inputfile][0]))
+    print get_bank_loop([int(val) for line in inputfile for val in line.rstrip().split()])
