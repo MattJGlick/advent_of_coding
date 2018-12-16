@@ -98,7 +98,7 @@ while True:
     rounds = 0
     done = False
     while not done:
-        fighters.sort(key=lambda f: reading_order(*f.pos()))
+        fighters.sort(key=lambda f: reading_order(f.pos()))
 
         for fighter in fighters:
             if not fighter.is_alive:
