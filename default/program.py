@@ -1,3 +1,4 @@
+from copy import deepcopy
 from itertools import combinations, permutations
 import numpy as np
 import re
