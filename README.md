@@ -8,7 +8,7 @@ cleaned the code up _a little bit_ but for the most part I was just trying to ge
 
 Current best rankings:
 
-1 star: 201
+1 star: 118
 
 2 star: 141
 
