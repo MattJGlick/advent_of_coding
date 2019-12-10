@@ -19,39 +19,37 @@ while True:
 
     x = f'{int(temp[cur]):05}'
     op = int(x[-2:])
-    m_1 = int(x[2])
-    m_2 = int(x[1])
-    m_3 = int(x[0])
+    modes = list(map(int, list(x[:3])))[::-1]
 
-    if m_1 == 0:
+    if modes[0] == 0:
         p1 = temp[temp[cur+1]]
-    elif m_1 == 1:
+    elif modes[0] == 1:
         p1 = temp[cur+1]
-    elif m_1 == 2:
+    elif modes[0] == 2:
         p1 = temp[temp[cur+1] + rel_base]
 
     if op in [1, 2, 5, 6, 7, 8, 9]:
-        if m_2 == 0:
+        if modes[1] == 0:
             p2 = temp[temp[cur+2]]
-        elif m_2 == 1:
+        elif modes[1] == 1:
             p2 = temp[cur+2]
-        elif m_2 == 2:
+        elif modes[1] == 2:
             p2 = temp[temp[cur+2] + rel_base]
 
     if op == 1:
-        if m_3 == 2:
+        if modes[2] == 2:
             temp[temp[cur+3] + rel_base] = p1 + p2
         else:
             temp[temp[cur+3]] = p1 + p2
         cur += 4
     elif op == 2:
-        if m_3 == 2:
+        if modes[2] == 2:
             temp[temp[cur+3] + rel_base] = p1 * p2
         else:
             temp[temp[cur+3]] = p1 * p2
         cur += 4
     elif op == 3:
-        if m_1 == 2:
+        if modes[0] == 2:
             temp[temp[cur+1] + rel_base] = cur_input
         else:
             temp[temp[cur+1]] = cur_input
@@ -60,35 +58,24 @@ while True:
         print(p1)
         cur += 2
     elif op == 5:
-        if p1 != 0:
-            cur = p2
-        else:
-            cur += 3
+        cur = p2 if p1 != 0 else cur + 3
     elif op == 6:
-        if p1 == 0:
-            cur = p2
-        else:
-            cur += 3
+        cur = p2 if p1 == 0 else cur + 3
     elif op == 7:
-        if m_3 == 2:
+        if modes[2] == 2:
             x = temp[cur+3] + rel_base
         else:
             x = temp[cur+3]
 
-        if p1 < p2:
-            temp[x] = 1
-        else:
-            temp[x] = 0
+        temp[x] = 1 if p1 < p2 else 0
         cur += 4
     elif op == 8:
-        if m_3 == 2:
+        if modes[2] == 2:
             x = temp[cur+3] + rel_base
         else:
             x = temp[cur+3]
-        if p1 == p2:
-            temp[x] = 1
-        else:
-            temp[x] = 0
+
+        temp[x] = 1 if p1 == p2 else 0
         cur += 4
     elif op == 9:
         rel_base += p1
